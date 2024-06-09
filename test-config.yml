@@ -1,0 +1,16 @@
+config:
+  target: 'http://localhost:8081'
+  phases: # 60 초 동안 매 1초마다 5개의 요청을 하는것
+    - duration: 10
+      arrivalRate: 5
+    - duration: 10
+      arrivalRate: 20
+    - duration: 30
+      arrivalRate: 100
+    - duration: 10
+      arrivalRate: 20
+
+scenarios:
+  - flow:
+      - get:
+          url: "/hello"

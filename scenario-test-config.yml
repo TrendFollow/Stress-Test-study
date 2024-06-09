@@ -1,0 +1,31 @@
+config:
+  target: 'http://localhost:8081'
+  phases:
+    - duration: 30
+      arrivalRate: 3
+      name: Warm up
+#    - duration: 30
+#      arrivalRate: 3
+#      rampTo: 30 # 처음에는 초당 3개씩 요청, 점점 늘려서 마지막에는 초당 30개 요청
+#      name: Ramp up load
+#    - duration: 60
+#      arrivalRate: 30
+#      name: Sustained load
+#    - duration: 30
+#      arrivalRate: 30
+#      rampTo: 10
+#      name: End of load
+
+scenarios:
+  - name: "login and use some functions"
+    flow:
+      - get:
+          url: "/login"
+      - get:
+          url: "/some-function-one"
+      - get:
+          url: "/some-function-two"
+  - name: "just login"
+    flow:
+      - get:
+          url: "/login"
